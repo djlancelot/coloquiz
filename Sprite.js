@@ -1,12 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, PanResponder, Animated} from 'react-native';
 
 export default function Sprite() {
+    const pan = React.useRef(new Animated.ValueXY()).current;
+
+    const panResponder = React.useRef(
+        PanResponder.create({
+            
+        })
+    ).current;
+
     const styles = StyleSheet.create({
         container: {
         borderRadius: 10,
         borderWidth: 5,
-        backgroundColor: 'lightgrey'
+        backgroundColor: 'lightgrey',
+        width: 100
     },
         text: {
             color: 'red',
@@ -14,7 +23,9 @@ export default function Sprite() {
             margin: 5,
             textAlign: 'center'
         }});
-    return     <View style={styles.container}>
-                    <Text style={styles.text}>Box</Text>
-                </View>
+    return     <Animated.View>
+                    <View style={styles.container}>
+                        <Text style={styles.text}>Box</Text>
+                    </View>
+                </Animated.View>
 }
